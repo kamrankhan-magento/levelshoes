@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="LevelShoes_Shopfinder::shopfinder" title="Shopfinder" module="LevelShoes_Shopfinder"
+             sortOrder="80" parent="Magento_Backend::content_elements"
+             action="levelshoes_shopfinder/shop/index"
+             resource="LevelShoes_Shopfinder::shop"/>
+    </menu>
+</config>

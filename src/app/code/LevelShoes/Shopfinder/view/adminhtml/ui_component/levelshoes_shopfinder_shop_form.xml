@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">levelshoes_shopfinder_shop_form.shop_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="LevelShoes\Shopfinder\Block\Adminhtml\Shop\Edit\BackButton"/>
+            <button name="delete" class="LevelShoes\Shopfinder\Block\Adminhtml\Shop\Edit\DeleteButton"/>
+            <button name="save" class="LevelShoes\Shopfinder\Block\Adminhtml\Shop\Edit\SaveButton"/>
+            <button name="save_and_continue" class="LevelShoes\Shopfinder\Block\Adminhtml\Shop\Edit\SaveAndContinueButton"/>
+        </buttons>
+        <namespace>levelshoes_shopfinder_shop_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>levelshoes_shopfinder_shop_form.shop_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="shop_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider name="shop_form_data_source" class="LevelShoes\Shopfinder\Model\Shop\DataProvider">
+            <settings>
+                <requestFieldName>shop_id</requestFieldName>
+                <primaryFieldName>shop_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label>General</label>
+        </settings>
+        <field name="shop_id" formElement="hidden">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="source" xsi:type="string">shop_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Shop Name</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="source" xsi:type="string">name</item>
+                </item>
+            </argument>
+        </field>
+        <field name="identifier" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Identifier</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="source" xsi:type="string">identifier</item>
+                </item>
+            </argument>
+        </field>
+        <field name="country" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Directory\Model\ResourceModel\Country\Collection</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Country</item>
+                    <item name="componentType" xsi:type="string">field</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="dataScope" xsi:type="string">country</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+            </argument>
+        </field>
+        <field name="image" formElement="fileUploader">
+            <settings>
+                <notice translate="true">Allowed file types: jpg, jpeg, gif, png.</notice>
+                <label translate="true">Image</label>
+                <componentType>fileUploader</componentType>
+                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+            </settings>
+            <formElements>
+                <fileUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                        <uploaderConfig>
+                            <param name="url" xsi:type="url" path="levelshoes_shopfinder/shop/upload"/>
+                        </uploaderConfig>
+                    </settings>
+                </fileUploader>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

@@ -1,0 +1,14 @@
+{
+    "levelshoes_shopfinder_shop": {
+        "column": {
+            "shop_id": true,
+            "shop_name": true,
+            "identifier": true,
+            "country": true,
+            "image": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

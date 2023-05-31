@@ -1,0 +1,24 @@
+type Query {
+    levelshoesShopfinderShops: [Shop] @resolver(class: "LevelShoes\\Shopfinder\\Model\\Resolver\\Shops") @doc(description: "Get all shops.")
+    levelshoesShopfinderShop(identifier: String!): Shop @resolver(class: "LevelShoes\\Shopfinder\\Model\\Resolver\\Shop") @doc(description: "Get a shop by identifier.")
+}
+
+type Mutation {
+    levelshoesShopfinderUpdateShop(input: ShopInput!): Shop @resolver(class: "LevelShoes\\Shopfinder\\Model\\Resolver\\UpdateShop") @doc(description: "Update a shop.")
+}
+
+type Shop {
+    shop_id: Int!
+    name: String!
+    identifier: String!
+    country: String!
+    image: String
+}
+
+input ShopInput {
+    shop_id: Int!
+    name: String!
+    identifier: String!
+    country: String!
+    image: String
+}

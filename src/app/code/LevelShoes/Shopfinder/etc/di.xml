@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="LevelShoes\Shopfinder\Model\ResourceModel\Shop\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">levelshoes_shopfinder_shop</argument>
+            <argument name="resourceModel" xsi:type="string">LevelShoes\Shopfinder\Model\ResourceModel\Shop\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="levelshoes_shopfinder_shop_listing_data_source" xsi:type="string">LevelShoes\Shopfinder\Model\ResourceModel\Shop\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="LevelShoes\Shopfinder\Api\ShopRepositoryInterface" type="LevelShoes\Shopfinder\Model\ShopRepository"/>
+    <preference for="LevelShoes\Shopfinder\Api\Data\ShopInterface" type="LevelShoes\Shopfinder\Model\Shop"/>
+    <preference for="LevelShoes\Shopfinder\Api\Data\ShopSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+</config>

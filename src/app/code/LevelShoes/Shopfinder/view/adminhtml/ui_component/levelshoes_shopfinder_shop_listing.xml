@@ -1,0 +1,133 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">levelshoes_shopfinder_shop_listing.levelshoes_shopfinder_shop_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>levelshoes_shopfinder_shop_columns</spinner>
+        <deps>
+            <dep>levelshoes_shopfinder_shop_listing.levelshoes_shopfinder_shop_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add new shop</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="levelshoes_shopfinder_shop_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">shop_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>LevelShoes_Shopfinder::Shop</aclResource>
+        <dataProvider name="levelshoes_shopfinder_shop_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>shop_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="levelshoes_shopfinder_shop_columns">
+        <settings>
+            <editorConfig>
+                <param name="selectProvider" xsi:type="string">levelshoes_shopfinder_shop_listing.levelshoes_shopfinder_shop_listing.levelshoes_shopfinder_shop_columns.ids</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="indexField" xsi:type="string">shop_id</param>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="levelshoes_shopfinder/Shop/inlineEdit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">levelshoes_shopfinder_shop_listing.levelshoes_shopfinder_shop_listing.levelshoes_shopfinder_shop_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids" sortOrder="10">
+            <settings>
+                <indexField>shop_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="shop_id" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Shop ID</label>
+            </settings>
+        </column>
+        <column name="name" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Shop Name</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="identifier" sortOrder="40">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Identifier</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="country" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Country</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="image" sortOrder="60">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">image</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="LevelShoes\Shopfinder\Ui\Component\Listing\Column\ShopActions" sortOrder="70">
+            <settings>
+                <indexField>shop_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

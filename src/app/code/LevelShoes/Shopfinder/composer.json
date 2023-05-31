@@ -1,0 +1,22 @@
+{
+    "name": "levelshoes/shopfinder",
+    "description": "LevelShoes Shopfinder module",
+    "version": "1.0.0",
+    "require": {
+        "php": "~7.3.0|~7.4||~8.0",
+        "magento/framework": ">=102.0.0"
+    },
+    "type": "magento2-module",
+    "authors": [
+        {
+            "name": "Kamran Khan",
+            "email": "kamran.unitedsol@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "LevelShoes\\Shopfinder\\": ""
+        }
+    }
+}
